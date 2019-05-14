@@ -1,0 +1,108 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+        <a mat-list-item href="#">Startseite</a>
+      <a mat-list-item href="#">Meine Daten</a>
+      <a mat-list-item href="#">Arbeitszeiterfassung</a>
+      <a mat-list-item href="#">Berichte</a>
+      <a mat-list-item href="#">Benutzerhandbuch</a>
+      <a mat-list-item href="#">Kontakt</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Hallo User!</span>
+    </mat-toolbar>
+
+    <table style="width:80%"  >
+      <tr>
+          <th>Arbeitszeiterfassung für {{currentMonth}} {{currentYear}}</th>
+      </tr>
+        <tr>
+          <th>Datum</th>
+          <th>Start</th>
+          <th>Ende</th>
+          <th>n/a</th>
+          <th>Soll</th>
+          <th>Ist</th>
+          <th>+/-</th>
+          <th>Vermerk</th>
+          <th>Aktion</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th> <th></th>
+            <th>
+                <label style="font-style:italic;font-size: 12px;">*Grund</label>
+            </th>
+            
+        </tr>
+
+        <tr  *ngFor="let d of days"  >
+<!--
+            <a  *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value) " >{{b.Produkttitel}}</a>
+            <td *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)">{{b.Autorname}}</td>
+
+            <input   matInput #anz type="text"   placeholder="Anzahl">
+            <mat-error *ngIf="anz.value > b.Lagerbestand " >max{{b.Lagerbestand}} verfügbar</mat-error>
+            <button *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)"  [disabled]= "anz.value > b.Lagerbestand || anz.value == 0 "  type ="button"  (click)="anzahl(anz.value)"  (click)="buy(b.Produkttitel)"  >buy</button>
+-->
+          <th>
+              <a>{{d}}</a>
+          </th>
+          <th>
+              <input type="time" id="BeginTime"  required>
+          </th>
+          <th>
+              <input type="time" id="EndTime"  required>
+          </th>
+
+          <th>
+                  
+                  <input type="checkbox">
+                  <select disabled="true" matNativeControl required>
+                     <option value="--">--</option>
+                    <option value="krank">krank</option>
+                    <option value="urlaub">urlaub</option>
+                    <option value="frei">frei</option>
+                    <option value="Dienstreise">Dienstreise</option>
+                    
+                  </select>
+                
+          </th>
+
+          <th>
+              <a>8</a>
+          </th>
+          <th></th>
+          <th></th>
+          <th>
+              <textarea style="min-width:150px;max-width:150px ;" matInput placeholder="Leave a comment"></textarea>
+          </th>
+          
+
+
+
+          </tr>
+
+      </table>    
+
+  </mat-sidenav-content>
+ 
+</mat-sidenav-container>
