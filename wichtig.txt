@@ -1,0 +1,16 @@
+ssh 141.56.131.34 -l userlocal
+PW:Ft_AZ!7x
+
+Step 1 — Installing mysql
+sudo apt update
+sudo apt-get install mysql-server
+
+phpMyAdmin
+
+ https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-18-04
+ 
+ User:wi2019
+ PW:se2wi2019
+ 
+
+http://localhost:4200/

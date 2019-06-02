@@ -30,79 +30,8 @@
       <span>Hallo User!</span>
     </mat-toolbar>
 
-    <table style="width:80%"  >
-      <tr>
-          <th>Arbeitszeiterfassung für {{currentMonth}} {{currentYear}}</th>
-      </tr>
-        <tr>
-          <th>Datum</th>
-          <th>Start</th>
-          <th>Ende</th>
-          <th>n/a</th>
-          <th>Soll</th>
-          <th>Ist</th>
-          <th>+/-</th>
-          <th>Vermerk</th>
-          <th>Aktion</th>
-        </tr>
-        <tr>
-            <th></th>
-            <th></th> <th></th>
-            <th>
-                <label style="font-style:italic;font-size: 12px;">*Grund</label>
-            </th>
-            
-        </tr>
-
-        <tr  *ngFor="let d of days"  >
-<!--
-            <a  *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value) " >{{b.Produkttitel}}</a>
-            <td *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)">{{b.Autorname}}</td>
-
-            <input   matInput #anz type="text"   placeholder="Anzahl">
-            <mat-error *ngIf="anz.value > b.Lagerbestand " >max{{b.Lagerbestand}} verfügbar</mat-error>
-            <button *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)"  [disabled]= "anz.value > b.Lagerbestand || anz.value == 0 "  type ="button"  (click)="anzahl(anz.value)"  (click)="buy(b.Produkttitel)"  >buy</button>
--->
-          <th>
-              <a>{{d}}</a>
-          </th>
-          <th>
-              <input type="time" id="BeginTime"  required>
-          </th>
-          <th>
-              <input type="time" id="EndTime"  required>
-          </th>
-
-          <th>
-                  
-                  <input type="checkbox">
-                  <select disabled="true" matNativeControl required>
-                     <option value="--">--</option>
-                    <option value="krank">krank</option>
-                    <option value="urlaub">urlaub</option>
-                    <option value="frei">frei</option>
-                    <option value="Dienstreise">Dienstreise</option>
-                    
-                  </select>
-                
-          </th>
-
-          <th>
-              <a>8</a>
-          </th>
-          <th></th>
-          <th></th>
-          <th>
-              <textarea style="min-width:150px;max-width:150px ;" matInput placeholder="Leave a comment"></textarea>
-          </th>
-          
-
-
-
-          </tr>
-
-      </table>    
+    <app-timetable></app-timetable>
 
   </mat-sidenav-content>
- 
+
 </mat-sidenav-container>

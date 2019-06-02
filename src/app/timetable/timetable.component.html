@@ -1,3 +1,88 @@
-<p>
-  timetable works!
-</p>
+
+<table style="width:90%"  >
+    <tr>
+        <th>Arbeitszeiterfassung für {{currentMonth}} {{currentYear}}</th>
+    </tr>
+      <tr>
+        <th>Datum</th>
+        <th>Start</th>
+        <th>Ende</th>
+        <th>n/a</th>
+        <th>Soll</th>
+        <th>Ist</th>
+        <th>+/-</th>
+        <th>Vermerk</th>
+        <th>Aktion</th>
+        <th></th>
+      </tr>
+      <tr>
+          <th></th>
+          <th></th> <th></th>
+          <th>
+              <label style="font-style:italic;font-size: 12px;">*Grund</label>
+          </th>
+          
+      </tr>
+
+      <tr  *ngFor="let d of days"  >
+<!--
+          <a  *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value) " >{{b.Produkttitel}}</a>
+          <td *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)">{{b.Autorname}}</td>
+
+          <input   matInput #anz type="text"   placeholder="Anzahl">
+          <mat-error *ngIf="anz.value > b.Lagerbestand " >max{{b.Lagerbestand}} verfügbar</mat-error>
+          <button *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)"  [disabled]= "anz.value > b.Lagerbestand || anz.value == 0 "  type ="button"  (click)="anzahl(anz.value)"  (click)="buy(b.Produkttitel)"  >buy</button>
+-->
+        <th>
+            <a  *ngIf="d != currentDate"  >{{d}}</a>
+            <a  *ngIf="d == currentDate" style="background-color: aquamarine;" >{{d}}</a>
+        </th>
+
+        <th>
+            <input matInput type="time" #beginn id="BeginTime"  required>
+           
+        </th>
+        <th>
+            <input type="time" #ende id="EndTime"  required>
+        </th>
+
+        <th>
+                <mat-checkbox #c class="checkbox" ></mat-checkbox>
+                <select id = "grund" #grund (change)="g"   [disabled] ="c.checked == false" >
+                  <option value="--">--</option>
+                  <option value="krank">krank</option>
+                  <option value="urlaub">urlaub</option>
+                  <option value="frei">frei</option>
+                  <option value="Dienstreise">Dienstreise</option>
+                  
+                </select>
+              
+        </th>
+        
+        <th>
+            <a>8</a>
+        </th>
+        <th>
+          <p>
+            {{currentDate}}
+          </p>
+        </th>
+        <th></th>
+        <th>
+            <textarea style="min-width:150px;max-width:150px ;" matInput placeholder="Leave a comment"></textarea>
+        </th>
+        
+        <th>
+            <button   [disabled]= "beginn.value  == '' || c.checked == true    "  type ="button"  >bearbeiten</button> 
+            
+        </th>
+        <th>
+          <p  style="color: red; font-size:10px;  " [hidden]="beginn.value  != '' || c.checked || d >= 2.6 "    >Bitte ausfühlen!</p>
+          <p  style="color: red; font-size:10px;  " *ngIf="(beginn.value != '') && (ende.value  == '')"    >Bitte Endezeit eingeben!</p>
+          
+          <p  *ngIf="c.checked && grund.value =='--' "    style="color: red; font-size:10px;  "     >Bitte Grund auswählen!</p>
+        </th>
+
+        </tr>
+
+    </table> 
