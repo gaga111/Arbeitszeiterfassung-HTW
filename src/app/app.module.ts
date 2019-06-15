@@ -9,6 +9,8 @@ import { TimetableComponent } from './timetable/timetable.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 
 @NgModule({
@@ -18,6 +20,10 @@ import {MatSelectModule} from '@angular/material/select';
     TimetableComponent,
   ],
   imports: [
+  
+    MatIconModule,
+    MatTooltipModule,
+    HttpClientModule,
     MatSelectModule,
     FormsModule,
     MatCheckboxModule,

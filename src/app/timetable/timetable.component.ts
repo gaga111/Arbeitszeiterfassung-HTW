@@ -18,7 +18,7 @@ export class TimetableComponent implements OnInit {
   
 
   
-  currentDate: String = "";
+  currentDate  = 0;
   daysInMonth = 0;
   days = new Array();
   currentMonth: String = "";
@@ -41,11 +41,15 @@ getCurrentDate(){
   this.currentMonth =  monthNames[today.getMonth()];
   var yyyy = today.getFullYear();
   this.currentYear = yyyy.toString();
-  this.currentDate = dd + '.' + mm ;
+  this.currentDate = parseFloat(dd + '.' + mm) ;
   this.daysInMonth=  parseInt(new Date(yyyy,today.getMonth()+1, 0).getDate().toString())
-  for (var i = 1; i < this.daysInMonth+1; i++) {
+  for (var i = 1; i < this.daysInMonth+2; i++) {
     var day = i+'.'+mm;
+    if (i == 1) {
+      this.days.push("Heute1");
+    }else {
     this.days.push(day);
+    }
    //console.log(day);
   }
 console.log(this.days);
@@ -53,7 +57,9 @@ console.log(this.days);
 
 }
 
-
+nam(){
+  console.log("CLICK");
+  }
   
 
 }
