@@ -1,5 +1,5 @@
 # Arbeitszeiterfassung
-
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.4.
 
 # WebServer
 http://141.56.131.34
@@ -8,8 +8,6 @@ http://141.56.131.34
 http://141.56.131.34/phpmyadmin/
  User:wi2019
  PW:se2wi2019
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.4.
 
 ## Development server
 
