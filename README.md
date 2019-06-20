@@ -36,16 +36,16 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Test Tabellen Anleitung 
 WebsServer :
 http://141.56.131.34/
-insertTime.php liegt hier :
+*insertTime.php liegt hier :
 http://141.56.131.34/src/
-Terminal öffnen
-VM starten : 
-ssh 141.56.131.34 -l userlocal
+*Terminal öffnen
+*VM starten : 
+ssh 141.56.131.34 -l userlocal,
 PW:Ft_AZ!7x
-Cd /var/www/html/src
-Da liegt insertTime.php
-Datei editieren : 
-sudo vi insertTime.php
-Nach der Änderung bitte ausführen !!! :
-systemctl reload apache2
+*Cd /var/www/html/src
+*Da liegt insertTime.php
+*Datei editieren : 
+*sudo vi insertTime.php
+*Nach der Änderung bitte ausführen !!! :
+*systemctl reload apache2
 
