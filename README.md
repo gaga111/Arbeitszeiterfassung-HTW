@@ -1,6 +1,6 @@
 # Arbeitszeiterfassung
 Das Projekt wurde mit  [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.4. erstellt.
-•Tools:
+•Tools: \n
 •AngularJS
 •Sprachen: TS,php
 •DB: myphpadmin
