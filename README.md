@@ -1,10 +1,10 @@
 # Arbeitszeiterfassung
 Das Projekt wurde mit  [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.4. erstellt.
-Tools:
-AngularJS
-Sprachen: TS,php
-DB: myphpadmin
-Server: Apache
+•Tools:
+•AngularJS
+•Sprachen: TS,php
+•DB: myphpadmin
+•Server: Apache
 
 # Implementierungsschritte 
 1. Apache auf VM installieren : 
