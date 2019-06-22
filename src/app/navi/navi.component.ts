@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import { Mitarbeiter } from '../services/mitarbeiter';
-import { MitarbeiterService} from '../services/mitarbeiter.service';
+import { Mitarbeiter } from '../services/MAService/mitarbeiter';
+import { MitarbeiterService} from '../services/MAService/mitarbeiter.service';
 //import { Router } from '@angular/router';
 
 @Component({
@@ -30,7 +30,7 @@ export class NaviComponent implements OnInit {
     this.MAServ.getMitarbeiter().subscribe(data =>
       {
           this.mitarbeiter = data;
-          console.log(this.mitarbeiter);
+        //  console.log(this.mitarbeiter);
          });
   
     }

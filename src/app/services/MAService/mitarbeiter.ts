@@ -1,4 +1,5 @@
 export class Mitarbeiter {
+    aa:string;
 snr: string;
 name : string;
 anrede : string;

@@ -10,7 +10,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
-import {MatTooltipModule} from '@angular/material/tooltip'; 
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { KontaktComponent } from './kontakt/kontakt.component';
+import { BerichteComponent } from './berichte/berichte.component';
+import { BenutzerhandbuchComponent } from './benutzerhandbuch/benutzerhandbuch.component';
+import { MeineDatenComponent } from './meine-daten/meine-daten.component'; 
 
 
 @NgModule({
@@ -18,9 +22,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AppComponent,
     NaviComponent,
     TimetableComponent,
+    KontaktComponent,
+    BerichteComponent,
+    BenutzerhandbuchComponent,
+    MeineDatenComponent,
   ],
+ 
   imports: [
-  
+
     MatIconModule,
     MatTooltipModule,
     HttpClientModule,

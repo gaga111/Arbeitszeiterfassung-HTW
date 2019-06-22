@@ -4,7 +4,7 @@
         <th style="position: absolute;font-size:150%;top: -35px;width: 100%"  >Ihre Arbeitszeiten im {{currentMonth}} {{currentYear}}</th>
     </tr>
 
-      <tr >
+      <tr  >
         <th>Datum</th>
         <th>Start</th>
         <th>Ende</th>
@@ -13,11 +13,12 @@
         aria-label="Button that displays a tooltip when focused or hovered over"     >n/a</th>
        
         <th>Soll</th>
-        <th>Ist</th>
+        <th matTooltip="30 Min werden automatisch abgezogen"
+        aria-label="Button that displays a tooltip when focused or hovered over"   >Ist <i class="fa fa-question-circle"></i></th>
         <th>+/-</th>
         <th>Vermerk</th>
-        <th>Aktion</th>
-        <th></th>
+  <!--       <th>Aktion</th> -->
+        <th style="color: brown">!</th>
       </tr>
       <tr>
           <th></th>
@@ -29,48 +30,27 @@
       </tr>
 
 
+      <tr id="tab" *ngFor="let d of days" >
+          
+        <th >
+            <a  *ngIf="d != currentDate" id=datum{{d}}  >{{d}}</a>
+            <a  *ngIf="d == currentDate" id=datum{{d}} style="background-color: aquamarine;" >{{d}}</a>
+        </th>
 
-   
-   
+        <th   *ngIf="d != currentDate"   >
+            <input matInput type="time" #beg id=beginn{{d}} (change) ="setStartTime(beg.value, d)" required>
+          </th>
+        <th *ngIf="d != currentDate"   >
+            <input type="time" #ende id=ende{{d}} [disabled] ="true" (change) ="setEndTime(ende.value,d)"   required>
+        </th >
 
-
-
-      <tr  *ngFor="let d of days" >
-<!--
-          <a  *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value) " >{{b.Produkttitel}}</a>
-          <td *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)">{{b.Autorname}}</td>
-
-          <input   matInput #anz type="text"   placeholder="Anzahl">
-          <mat-error *ngIf="anz.value > b.Lagerbestand " >max{{b.Lagerbestand}} verfügbar</mat-error>
-          <button *ngIf="b.Produkttitel.includes(t.value) && b.Autorname.includes(a.value)"  [disabled]= "anz.value > b.Lagerbestand || anz.value == 0 "  type ="button"  (click)="anzahl(anz.value)"  (click)="buy(b.Produkttitel)"  >buy</button>
--->
-<!--
-<th *ngIf="d != currentDate" >
-    <a>{{d}}</a>
-</th>
-
-<th *ngIf="d == currentDate" style="background-color: aquamarine;border-radius: 30em" >
-   <a >{{d}}</a>
-</th>
--->
-      
-        <th   >
-            <a  *ngIf="d != currentDate"  >{{d}}</a>
-            <a  *ngIf="d == currentDate" style="background-color: aquamarine;" >{{d}}</a>
+        <th *ngIf="d != currentDate">
+            <input type="time"  id=untrbr{{d}} [disabled] ="true" (change) ="setEndTime(ende.value,d)"   required> 
         </th>
 
         <th *ngIf="d != currentDate" >
-            <input matInput type="time" #beginn id="BeginTime" (change) ="nam()" required>
-        </th>
-        <th *ngIf="d != currentDate" >
-            <input type="time" #ende id="EndTime"  required>
-        </th>
-
-        <th></th>
-
-        <th *ngIf="d != currentDate" >
-                <mat-checkbox  matTooltip=" im nächsten Feld bitte Grund"
-                aria-label="Button that displays a tooltip when focused or hovered over"      #c class="checkbox" ></mat-checkbox>
+                <mat-checkbox matTooltip=" bitte Grund eingeben"
+                aria-label="Button that displays a tooltip when focused or hovered over" (change) ="checkAbwesendheit(d)"     #c class="checkbox" ></mat-checkbox>
                 <select id = "grund" #grund (change)="g"   [disabled] ="c.checked == false" >
                   <option value="--">--</option>
                   <option value="krank">krank</option>
@@ -85,27 +65,25 @@
         <th *ngIf="d != currentDate" >
             <a>8</a>
         </th>
-        <th *ngIf="d != currentDate" >
-          <p>
-            {{currentDate}}
-          </p>
+        <th *ngIf="d != currentDate" >  <!-- IST COL-->
+          <p id= ist{{d}}></p>
         </th>
         <th *ngIf="d != currentDate" ></th>
         <th *ngIf="d != currentDate" >
             <textarea style="min-width:150px;max-width:150px ;" matInput placeholder="Leave a comment"></textarea>
         </th>
-       <!-- 
-        <th *ngIf="d != currentDate" >
-            <button   [disabled]= "beginn.value  == '' || c.checked == true    "  type ="button"  >bearbeiten</button> 
+       
+   <!--       <th *ngIf="d != currentDate" >
+            <button   [disabled]= "beginn  == '' || abwesend == 1    "  type ="button"  >bearbeiten</button> 
             
-        </th>
+        </th>  -->
         <th  >
-          <p  style="color: red; font-size:10px;  " [hidden]="beginn.value  != '' || c.checked  "    >Bitte ausfühlen!</p>
-          <p  style="color: red; font-size:10px;  " *ngIf="(beginn.value != '') && (ende.value  == '')"    >Bitte Endezeit eingeben!</p>
-          
-          <p  *ngIf="c.checked && grund.value =='--' "    style="color: red; font-size:10px;  "     >Bitte Grund auswählen!</p>
+          <p *ngIf="d < currentDate || d == 'Heute'"  style="color: red; font-size:10px;  " id= ausf{{d}}  >Bitte ausfüllen!</p>
+          <p  style="color: red; font-size:10px; " hidden = "true" id= endEing{{d}}    >Bitte Endzeit eingeben!</p>
+          <p  style="color: red; font-size:10px; " hidden = "true"  id= grund{{d}}   >Bitte Grund auswählen!</p>
         </th>
-      -->
+   
         </tr>
 
     </table> 
+    

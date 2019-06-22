@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { MitarbeiterService } from './mitarbeiter.service';
+import { MitarbeiterService } from '../MAService/mitarbeiter.service';
 
 
 describe('MitarbeiterService', () => {
