@@ -9,8 +9,8 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Arbeitszeiterfassung</a>
-      <a mat-list-item href="#">Meine Daten</a>
+      <a mat-list-item >Arbeitszeiterfassung</a>
+      <a mat-list-item routerLink='/meineDaten' routerLinkActive="active">Meine Daten</a>
       <a mat-list-item href="#">Berichte</a>
       <a mat-list-item href="#">Benutzerhandbuch</a>
       <a mat-list-item href="#">Kontakt</a>
@@ -29,7 +29,8 @@
       </button>
       <span>Hallo User!</span>
     </mat-toolbar>
-    <button class="vorMonBtn"><i class="fa fa-chevron-circle-left fa-lg "></i> Vormonat</button>
+    
+    
     <app-timetable></app-timetable>
 
   </mat-sidenav-content>

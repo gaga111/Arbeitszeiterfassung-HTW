@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Mitarbeiter } from '../services/MAService/mitarbeiter';
 import { MitarbeiterService} from '../services/MAService/mitarbeiter.service';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navi',
@@ -23,7 +23,7 @@ export class NaviComponent implements OnInit {
   tag: number;
   error = 0;
   error2 = 0;
-    constructor( private MAServ : MitarbeiterService, /* private router: Router */ ) { }
+    constructor( private MAServ : MitarbeiterService, private router: Router ) { }
   
     ngOnInit() {
 
@@ -32,39 +32,10 @@ export class NaviComponent implements OnInit {
           this.mitarbeiter = data;
         //  console.log(this.mitarbeiter);
          });
+       //  this.router.navigateByUrl('/meineDaten');
   
     }
   
-  nam(e: string){
-  this.name = e;
-  }
-  /*
-  psw(e: any){
+
   
-  this.error = 1;
-  this.error2 = 1;
-  if (this.name != ""){
-  
-  for (let i = 0; i< this.users.length;i++){
-  
-   if(this.users[i].name == this.name){
-     this.error = 0;
-    if (e != "" )
-  
-   if (e ==  this.users[i].password ){
-    this.error2= 0;
-  
-  this.session.updateName(this.name );
-   this.session.updateID(this.users[i].id);
-   this.session.updatePass( this.users[i].password );
-  this.router.navigate(['/home']);
-   }
-  
-   }
-  
-  }
-  }
-  
-  }
-  */
   }

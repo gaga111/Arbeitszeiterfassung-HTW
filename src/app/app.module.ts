@@ -15,6 +15,15 @@ import { KontaktComponent } from './kontakt/kontakt.component';
 import { BerichteComponent } from './berichte/berichte.component';
 import { BenutzerhandbuchComponent } from './benutzerhandbuch/benutzerhandbuch.component';
 import { MeineDatenComponent } from './meine-daten/meine-daten.component'; 
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'startseite', component: NaviComponent },
+  { path: 'meineDaten', component: MeineDatenComponent },
+  { path: 'Kontakt',     component: KontaktComponent },
+  { path: 'Berichte',     component: BerichteComponent },
+  { path: 'Benutzerhandbuch',  component: BenutzerhandbuchComponent },
+];
 
 
 @NgModule({
@@ -29,7 +38,10 @@ import { MeineDatenComponent } from './meine-daten/meine-daten.component';
   ],
  
   imports: [
-
+    RouterModule.forRoot(
+      appRoutes,
+     // { enableTracing: true } // <-- debugging purposes only
+    ),
     MatIconModule,
     MatTooltipModule,
     HttpClientModule,

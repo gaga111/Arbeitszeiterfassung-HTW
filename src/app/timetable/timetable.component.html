@@ -1,7 +1,7 @@
 
-<table style="width:99%;position: relative; top:20px;" >
+<table style="width:99%;position: relative; top:60px;" >
     <tr>
-        <th style="position: absolute;font-size:150%;top: -35px;width: 100%"  >Ihre Arbeitszeiten im {{currentMonth}} {{currentYear}}</th>
+        <th style="position: absolute;font-size:150%;top: -35px;width: 100%"  > <button class="vorMonBtn" (click)="showLastMonth()"><i class="fa fa-chevron-circle-left fa-lg "></i> Vormonat</button>Ihre Arbeitszeit im {{currentMonth}} {{currentYear}}</th>
     </tr>
 
       <tr  >
@@ -51,7 +51,7 @@
         <th *ngIf="d != currentDate" >
                 <mat-checkbox matTooltip=" bitte Grund eingeben"
                 aria-label="Button that displays a tooltip when focused or hovered over" (change) ="checkAbwesendheit(d)"     #c class="checkbox" ></mat-checkbox>
-                <select id = "grund" #grund (change)="g"   [disabled] ="c.checked == false" >
+                <select id = "grund" #grund (change)="setGrund(grund.value,d)"   [disabled] ="c.checked == false" >
                   <option value="--">--</option>
                   <option value="krank">krank</option>
                   <option value="urlaub">urlaub</option>

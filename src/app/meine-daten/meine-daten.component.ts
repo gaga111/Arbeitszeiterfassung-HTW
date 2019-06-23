@@ -10,6 +10,7 @@ export class MeineDatenComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("meineDaten");
   }
 
 }

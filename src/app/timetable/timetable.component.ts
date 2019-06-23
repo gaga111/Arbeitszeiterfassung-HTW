@@ -26,7 +26,8 @@ export class TimetableComponent implements OnInit {
   daysInMonth = 0;
   days = new Array();
   currentMonth: String = "";
-  mm: String = "";
+  today = new Date();
+  todayMonth = this.today.getMonth() + 1; 
   currentYear: String = "";
   beginn = new Array();
   ist : String = "0";
@@ -34,6 +35,7 @@ export class TimetableComponent implements OnInit {
   mySnr: Number = 0;
   //: String = "0";
   abwesend = new Array();
+  
 
   constructor(private MAServ: MitarbeiterService, private DataServ: DataService,private ZTServ : ZeitService,private breakpointObserver: BreakpointObserver) {}
 
@@ -46,30 +48,41 @@ this.MAServ.getMitarbeiter().subscribe(data =>
   {
       
       console.log(data);
-     // this.parseUserTimes(this.Zeit);
+
      });
   
 
-this.getCurrentDate();
+this.getCurrentDate(this.today,this.todayMonth);
 var z = new Zeit();
 z.snr = this.mySnr.toString();
 this.ZTServ.getTime(z).subscribe(data =>
   {
       this.Zeit = JSON.parse(data.slice(9));
       console.log(this.Zeit.length + " Datensätze erhalten");
-      this.parseUserTimes(this.Zeit);
+      this.parseUserTimes(this.Zeit,this.todayMonth);
      });
   }
 
-parseUserTimes(time){
+parseUserTimes(time ,mon){
   for(var i=0;i< time.length-1;i++){
-    if(time[i]['Jahr'] == this.currentYear && time[i]['Monat']== this.mm){
-  
+    if(time[i]['Jahr'] == this.currentYear && time[i]['Monat']== mon ){
+      console.log(time[i]);
+   var datum = `${time[i]['Tag']+"."+time[i]['Monat']}`;
    var start = (<HTMLInputElement>document.getElementById(`${"beginn"+time[i]['Tag']+"."+time[i]['Monat']}`));
    var ende = (<HTMLInputElement>document.getElementById(`${"ende"+time[i]['Tag']+"."+time[i]['Monat']}`));
-  //console.log(`${"beginn"+time[i]['Tag']+"."+time[i]['Monat']}`);
-   start.value = time[i]['Start'];
-   ende.value = time[i]['Ende'];
+   //console.log(`${"beginn"+time[i]['Tag']+"."+time[i]['Monat']}`);
+   
+    if (start ){
+ 
+      start.value = time[i]['Start'];
+      ende.value = time[i]['Ende'];
+      this.checkRowRules(datum,time[i]['Tag']);
+      this.berechneIst(time[i]['Start'],time[i]['Ende'],datum);
+     
+      }
+
+   
+  
   /* this.Zeit[i].snr = time[i]['SNr'];
    this.Zeit[i].Unterbr = time[i]['Unterbrechung'];
    this.Zeit[i].abwesend = time[0]['Abwesend'];
@@ -86,24 +99,37 @@ parseUserTimes(time){
   
 }
 
-getCurrentDate(){
+showLastMonth(){
+  setTimeout(function(){ 
+    this.getCurrentDate(this.today,this.todayMonth-1);
+    this.parseUserTimes(this.Zeit,this.todayMonth -1);
+  
+  }, 3000);
+
+
+
+}
+
+getCurrentDate(today,mon){
   const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni",
   "Juli", "August", "September", "Oktober", "November", "Dezember"
 ];
 
-  var today = new Date();
+  
   var dd = String(today.getDate());
-  this.mm = String(today.getMonth() + 1); //January is 0!
-  this.currentMonth =  monthNames[today.getMonth()];
+  var mm = String(mon); //January is 0!
+  this.currentMonth =  monthNames[mon-1];
+  console.log(this.currentMonth);
   var yyyy = today.getFullYear();
   this.currentYear = yyyy.toString();
-  this.currentDate = parseFloat(dd + '.' + this.mm) ;
-  this.daysInMonth=  parseInt(new Date(yyyy,today.getMonth()+1, 0).getDate().toString())
+  this.currentDate = parseFloat(dd + '.' + mm) ;
+  this.daysInMonth=  parseInt(new Date(yyyy,today.getMonth()+1, 0).getDate().toString());
+  this.days = [];
   for (var i = 1; i < this.daysInMonth+2; i++) {
     this.beginn.push("");
     this.ende.push("");
     this.abwesend.push(0);
-    var day = i -1 +'.'+this.mm;
+    var day = i -1 +'.'+mm;
     if (i == 1) {
     this.days.push("Heute");
     }else {
@@ -111,7 +137,7 @@ getCurrentDate(){
     }
    //console.log(day);
   }
-//console.log(this.days);
+ console.log(this.days);
 
 
 }
@@ -159,9 +185,24 @@ checkAbwesendheit(datum : String){
   this.checkRowRules(datum,indx);
 }
 
+setGrund(datum : String){
+  datum   = `${datum}`;
+  if (datum =="Heute"){
+    datum = this.currentDate.toString();
+  }
+  var indx = parseInt(datum.split(".")[0]) +1;
+  if (this.abwesend[indx] == 0){ 
+    this.abwesend[indx] = 1;    // Abwesend
+  } else {
+    this.abwesend[indx] = 0;   // Anwesend
+  }
+  this.checkRowRules(datum,indx);
+}
+
+
 berechneIst(start,ende,id){
  // Unterbrechung !
- console.log("id"+ id );
+ //console.log("id"+ id );
   var pause = 30 ;
   var gesamt = 24*60;
   ​start = start.split(':');
@@ -210,8 +251,9 @@ checkRowRules(id : String,indx) {
   if (id == this.currentDate.toString()){  // Heute
     id = "Heute";
   }
+  if(  document.getElementById(`${"ausf"+id}`)){
   if( this.beginn[indx] != '' && this.abwesend[indx] == 0 && this.ende[indx] == '' ){ // Anwesend,  Start eingetragen , Ende nicht eingetragen
-    document.getElementById(`${"ausf"+id}`).style.display = "none";
+   document.getElementById(`${"ausf"+id}`).style.display = "none";
    document.getElementById(`${"endEing"+id}`).style.display = "block";
    document.getElementById(`${"grund"+id}`).style.display = "none";
    var element =  <HTMLInputElement> document.getElementById("ende"+`${id}`);
@@ -236,7 +278,7 @@ checkRowRules(id : String,indx) {
     document.getElementById(`${"endEing"+id}`).style.display = "none";
     document.getElementById(`${"grund"+id}`).style.display = "block";
   }
-
+  }
 }
 
 

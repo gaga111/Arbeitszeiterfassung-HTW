@@ -3,3 +3,13 @@
     background-color: aquamarine;
   }
  
+  .vorMonBtn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 13px;
+    position: absolute;
+    left: 14px;
+    border-radius: 15px;
+  }
