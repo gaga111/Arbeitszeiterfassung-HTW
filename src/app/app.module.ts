@@ -18,7 +18,7 @@ import { MeineDatenComponent } from './meine-daten/meine-daten.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
-  { path: 'startseite', component: NaviComponent },
+  { path: 'Arbeitszeiterfassung', component: NaviComponent },
   { path: 'meineDaten', component: MeineDatenComponent },
   { path: 'Kontakt',     component: KontaktComponent },
   { path: 'Berichte',     component: BerichteComponent },
