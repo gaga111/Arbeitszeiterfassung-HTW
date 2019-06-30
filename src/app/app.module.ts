@@ -16,13 +16,16 @@ import { BerichteComponent } from './berichte/berichte.component';
 import { BenutzerhandbuchComponent } from './benutzerhandbuch/benutzerhandbuch.component';
 import { MeineDatenComponent } from './meine-daten/meine-daten.component'; 
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'Arbeitszeiterfassung', component: NaviComponent },
   { path: 'meineDaten', component: MeineDatenComponent },
   { path: 'Kontakt',     component: KontaktComponent },
   { path: 'Berichte',     component: BerichteComponent },
+  { path: 'Login',     component: LoginComponent},
   { path: 'Benutzerhandbuch',  component: BenutzerhandbuchComponent },
+ 
 ];
 
 
@@ -35,13 +38,11 @@ const appRoutes: Routes = [
     BerichteComponent,
     BenutzerhandbuchComponent,
     MeineDatenComponent,
+    LoginComponent,
   ],
  
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-     // { enableTracing: true } // <-- debugging purposes only
-    ),
+    RouterModule.forRoot(appRoutes),
     MatIconModule,
     MatTooltipModule,
     HttpClientModule,

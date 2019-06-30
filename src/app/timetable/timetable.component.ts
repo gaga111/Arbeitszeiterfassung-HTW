@@ -25,6 +25,7 @@ export class TimetableComponent implements OnInit {
   currentDate  = 0;
   daysInMonth = 0;
   days = new Array();
+  vormonatIstArray = new Array();
   currentMonth: String = "";
   today = new Date();
   todayMonth = this.today.getMonth() + 1; 
@@ -32,87 +33,207 @@ export class TimetableComponent implements OnInit {
   currentYear: String = "";
   beginn = new Array();
   soll : String = "0";
+  ist = new Array();
+  diff = new Array();
   ende = new Array();
   mySnr: Number = 0;
   abwesend = new Array();
   unterbrechung : String = "0:0";
+  sollSaldo = 0;
+  istSaldo = 0;
+  Saldo : String = "0";
+  vormonat : String = "0";
+  datensatz = new Zeit();
+  vormonatSaldo =  0;
+  vormonatSollSaldo = 0;
 
   
 
   constructor(private MAServ: MitarbeiterService, private DataServ: DataService,private ZTServ : ZeitService,private breakpointObserver: BreakpointObserver) {}
 
 ngOnInit(){
-
+  
 this.DataServ.meineSnr.subscribe(nr => this.mySnr = nr);
 console.log("MYS"+ this.mySnr);
   
 
 this.getCurrentDate(this.today,this.todayMonth);
+var that = this;
+setTimeout(function(){ 
+  that.berechneDreiWochenAbstand(that.todayMonth);
+}, 1000);
+
 var z = new Zeit();
 z.snr = this.mySnr.toString();
 this.ZTServ.getTime(z).subscribe(data =>
   {
-      this.Zeit = JSON.parse(data.slice(9));
+  
+      this.Zeit = JSON.parse(data);
       console.log(this.Zeit.length + " Datensätze erhalten");
       this.parseUserTimes(this.Zeit,this.todayMonth);
+      
      });
   }
 
+berechneDreiWochenAbstand(mon){
+
+ var tage = this.currentDate.toString().split(".")[0];
+ var currentMon = this.currentDate.toString().split(".")[1];
+ var days=  parseFloat(new Date(this.today.getFullYear(),mon , 0).getDate().toString());
+ var lastday = 0;
+
+ 
+
+  if ( mon == currentMon){ //Aktueller Mon
+   lastday = parseFloat(tage) - 21;
+   
+  }
+  else if (mon == (parseFloat(currentMon) - 1).toString()){ //Vormonat
+   
+      lastday = days + (parseFloat(tage) - 21);
+
+      for (var i = lastday; i < days+1; i++){
+        var el = <HTMLInputElement> document.getElementById(`${"beginn"+i+"."+mon}`);
+         el.disabled = true;
+         var el2 = <HTMLInputElement> document.getElementById(`${"bearb"+i+"."+mon}`);
+         el2.disabled = false;
+         
+      }
+    
+ 
+    
+  }
+  if (lastday > 0){
+    console.log("lastday "+lastday);
+
+    for (var i = 0; i < lastday; i++){
+      var d = i +1;
+      var heute = <HTMLInputElement> document.getElementById("beginnHeute");
+      if(heute){
+       heute.disabled = true;
+      }
+      var el = <HTMLInputElement> document.getElementById(`${"beginn"+d+"."+mon}`);
+       el.disabled = true;
+       var el2 = <HTMLInputElement> document.getElementById(`${"bearb"+d+"."+mon}`);
+       el2.disabled = true;
+       
+    }
+ 
+  }
+  
+}
+
+  berechneVormonatSaldo() {
+   /* var time = this.Zeit;
+    var mon = this.todayMonth - 1;
+    var Vormonatsoll;
+    for (var i = 0; i < time.length - 1; i++) {
+      if (time[i]['Jahr'] == this.currentYear && time[i]['Monat'] == mon) { //Vormonat
+
+        if (time[i]['Soll']) {
+          Vormonatsoll = time[i]['Soll'];
+        }
+        this.vormonatIstArray.push(time[i]['Ist']);
+      }
+
+    }
+
+
+    this.vormonatSollSaldo = 0;
+    this.vormonatSaldo = 0;
+    var ist = 0 ;
+    var vormonatIstSaldo =0;
+    var days = parseFloat(new Date(this.today.getFullYear(), mon, 0).getDate().toString());
+    Vormonatsoll = Vormonatsoll.split(':');
+    var hhInMin = parseInt(Vormonatsoll[0]) * 60;
+    var min = parseInt(Vormonatsoll[1]);
+    for (var i = 0; i < days; i++) {
+      this.vormonatSollSaldo = this.vormonatSollSaldo + hhInMin + min;
+
+ ​       ist = this.vormonatIstArray[i].split(':');
+        var hhInMin = parseInt(ist[0])*60;
+        var min = parseInt(ist[1]);
+        vormonatIstSaldo = vormonatIstSaldo+ hhInMin + min ;
+        this.vormonatSaldo = this.vormonatSollSaldo - vormonatIstSaldo;
+        
+      //  console.log("Vormonatssaldo"+this.vormonatSaldo);
+
+    }
+    var saldoSt = Math.floor(this.vormonatSaldo / 60);
+    var saldoMin =  this.vormonatSaldo% 60;
+    console.log("Vormonatssaldo"+saldoSt,saldoMin);
+/*,sa
+    this.Saldo = "";
+    //  console.log(soll,ist);
+     var dif = soll - ist;
+     var saldoSt = Math.floor(dif / 60);
+     var saldoMin =  dif % 60;
+     
+     if (dif < 0){ //Fehlende Stunde
+      this.Saldo = `${-saldoSt}St ${-saldoMin}Min`;
+      document.getElementById("Saldo").style.color= "green";
+     }else if (dif >= 0){ // OK oder Überstunden
+      this.Saldo = `-${saldoSt}St ${saldoMin}Min`;
+      document.getElementById("Saldo").style.color= "red";
+    }*/
+
+  }
+
 parseUserTimes(time ,mon){
-  for(var i=0;i< time.length-1;i++){
-    if(time[i]['Jahr'] == this.currentYear && time[i]['Monat']== mon ){
-     // console.log(time[i]);
+this.abwesend = [];
+  for(var i=0;i< time.length;i++){
+    if(time[i]['Jahr'] == this.currentYear && time[i]['Monat']== mon ){ //Aktueller Monat
+
+      if (time[i]['Abwesend']){
+        this.abwesend.push(1);
+      }else {
+        this.abwesend.push(0);
+      }
    var datum = `${time[i]['Tag']+"."+time[i]['Monat']}`;
    var start = (<HTMLInputElement>document.getElementById(`${"beginn"+time[i]['Tag']+"."+time[i]['Monat']}`));
    var ende = (<HTMLInputElement>document.getElementById(`${"ende"+time[i]['Tag']+"."+time[i]['Monat']}`));
    var untrbr = (<HTMLInputElement>document.getElementById(`${"untrbr"+time[i]['Tag']+"."+time[i]['Monat']}`));
    var istval = (<HTMLInputElement>document.getElementById(`${"spalteIst"+time[i]['Tag']+"."+time[i]['Monat']}`));
-   //console.log(`${"beginn"+time[i]['Tag']+"."+time[i]['Monat']}`);
-   
+   if (time[i]['Soll']){
+   this.DataServ.setSollSt(time[i]['Soll']);
+   this.DataServ.sollSt.subscribe(vn => this.soll = vn);
+   }
     if (start ){
       this.beginn.push(time[i]['Start']);
+      this.ist.push(time[i]['Ist']);
       this.ende.push(time[i]['Ende']);
-      if (time[0]['Abwesend']){
-        this.abwesend.push(1);
-      }else {
-        this.abwesend.push(0);
-      }
+      
    
       start.value = time[i]['Start'];
       ende.value = time[i]['Ende'];
       untrbr.value =time[i]['Unterbrechung'];
       istval.innerHTML = time[i]['Ist'];
+      var dat = `${time[i]['Tag']+"."+time[i]['Monat']}`;
+      this.berechneDiff(time[i]['Ist'],dat)
       this.soll = time[i]['Soll'];
       this.checkRowRules(datum,time[i]['Tag']);
-      //this.berechneIst(time[i]['Start'],time[i]['Ende'],datum,time[i]['Unterbrechung']);
+      this.berechneIstSaldo(time[i]['Ist']);
      
       }else {
+     
       this.beginn.push("");
       this.ende.push("");
-      this.abwesend.push(0);
+      this.ist.push("");
      
       }
-
-   
-  
-  /* this.Zeit[i].snr = time[i]['SNr'];
-   this.Zeit[i].Unterbr = time[i]['Unterbrechung'];
-   this.Zeit[i].abwesend = time[0]['Abwesend'];
-   this.Zeit[i].ende = time[0]['Ende'];
-   this.Zeit[i].ist = time[0]['Ist'];
-   this.Zeit[i].jahr = time[0]['Jahr'];
-   this.Zeit[i].mon = time[0]['Monat'];
-   this.Zeit[i].start = time[0]['Start'];
-   this.Zeit[i].tag = time[0]['Tag'];*/
 
     }  
 
   }
+  this.berechneSollSaldo(this.soll,mon);
+  this.berechneSaldo(this.sollSaldo.toString(),this.istSaldo.toString());
+  this.berechneVormonatSaldo() ;
   
 }
 
 showLastMonth(){
 
+  document.getElementById("vorMonBtn").style.display = "none";
  this.month = this.month-1;
  if (this.month < this.todayMonth){
   document.getElementById("nextMonBtn").style.display = "block";
@@ -120,9 +241,18 @@ showLastMonth(){
   document.getElementById("nextMonBtn").style.display = "none";
  }
     this.getCurrentDate(this.today,this.month);
+    this.istSaldo = 0;
    var that = this;
+   
     setTimeout(function(){ 
       that.parseUserTimes(that.Zeit,that.month );
+      //that.berechneDreiWochenAbstand(that.month);
+    
+    }, 1000);
+    setTimeout(function(){ 
+      
+       that.berechneDreiWochenAbstand(that.month);
+       that.vormonat = that.month.toString();
     
     }, 1000);
 
@@ -130,17 +260,20 @@ showLastMonth(){
 
 showNextMonth(){
   this.month = this.month+1;
-  
+  this.vormonat = "0";
+  document.getElementById("vorMonBtn").style.display = "block";
      this.getCurrentDate(this.today,this.month);
     var that = this;
      setTimeout(function(){ 
        that.parseUserTimes(that.Zeit,that.month );
-     
+       that.berechneDreiWochenAbstand(that.month);
+   
      }, 1000);
      if (this.month +1 == this.todayMonth){
       document.getElementById("nextMonBtn").style.display = "block";
      }else {
       document.getElementById("nextMonBtn").style.display = "none";
+     
      }
  
  }
@@ -160,28 +293,31 @@ getCurrentDate(today,mon){
   var yyyy = today.getFullYear();
   this.currentYear = yyyy.toString();
   this.currentDate = parseFloat(dd + '.' + String(this.todayMonth));
-  console.log(this.currentDate);
+  
+  console.log("current Date"+this.currentDate);
   this.daysInMonth=  parseInt(new Date(yyyy,mon , 0).getDate().toString());
   this.days = [];
   var ii = this.daysInMonth +2;
   if (mon == this.todayMonth ) {  // Aktueller Monat 
-
+    
     for (var i = 1; i < ii; i++) {
-  
       var day = i -1 +'.'+mm;
+      this.abwesend.push("0");
       if (i == 1  ) { 
       this.days.push("Heute");
       }else {
       this.days.push(parseFloat(day));
       }
     }
+    
+    
   } 
     else {      //Vormonat  
   
       for (var i = 1; i < ii; i++) {
-       
         var day = i -1 +'.'+mm;
         var day0 = 0 +'.'+mm;
+        this.abwesend.push("0");
      //   console.log(this.currentDate);
       //   console.log(day);
         this.days.push(parseFloat(day));
@@ -211,14 +347,15 @@ getCurrentDate(today,mon){
 
 
 setStartTime(time : String, datum: String){
+  //console.log("setStart");
   //console.log(`${datum}`);
   datum   = `${datum}`;
   var val = (<HTMLInputElement>document.getElementById(`${"ende"+datum}`)); 
   val.value = "";
-  document.getElementById(`${"ist"+datum}`).innerHTML = "";
+  document.getElementById(`${"spalteIst"+datum}`).innerHTML = "";
+  document.getElementById(`${"spalteDiff"+datum}`).innerHTML = "";
   if (datum =="Heute"){
     datum = this.currentDate.toString();
-    //console.log(datum);
   }
   var indx = parseInt(datum.split(".")[0]) +1;
   this.beginn[indx] = time;
@@ -238,6 +375,7 @@ setEndTime(time : String, datum: String){
   var indx = parseInt(datum.split(".")[0]) +1;
   this.ende[indx] = time;
   this.checkRowRules(datum,indx);
+  //console.log("Param" + this.beginn[indx],time,datum,this.unterbrechung);
   this.berechneIst(this.beginn[indx],time,datum,this.unterbrechung);
 }
 
@@ -265,8 +403,19 @@ checkAbwesendheit(datum : String){
     datum = this.currentDate.toString();
   }
   var indx = parseInt(datum.split(".")[0]) +1;
+  var beginn =  <HTMLInputElement> document.getElementById("beginn"+`${datum}`);
   if (this.abwesend[indx] == 0){ 
     this.abwesend[indx] = 1;    // Abwesend
+
+    if(beginn.disabled == false ){
+  
+    var ende =  <HTMLInputElement> document.getElementById("ende"+`${datum}`);
+    ende.disabled = false;
+    ende.value = "";
+    ende.disabled = true;
+    beginn.value = "";
+    }
+
   } else {
     this.abwesend[indx] = 0;   // Anwesend
   }
@@ -297,7 +446,6 @@ berechneIst(start,ende,id, unterbrechung){
    untrbrInMin =  untrbrHH + untrbrMM;
   }
   var pause = 30 ;
-  var gesamt = 24*60;
   ​start = start.split(':');
   ende = ende.split(':');
   var HHStart = parseInt(start[0])*60;
@@ -305,6 +453,7 @@ berechneIst(start,ende,id, unterbrechung){
   var MMStart = parseInt(start[1]);
   var MMEnde = parseInt(ende[1]);
   var diff = 0;
+  var ist = "";
   diff = ((HHEnde+MMEnde) - (HHStart+MMStart) - pause - untrbrInMin); 
 
   if (diff < 0  ){
@@ -316,49 +465,201 @@ berechneIst(start,ende,id, unterbrechung){
      val.value = "";
      var val2 = (<HTMLInputElement>document.getElementById(`${"ende"+id}`)); 
      val2.value = "";
-    document.getElementById(`${"ist"+id}`).innerHTML = "";
-    this.ist= `${hh}:${mm}`;
+     document.getElementById(`${"spalteIst"+id}`).innerHTML = "";
+     ist= `${hh}:${mm}`;
   }
   else if (!diff) {
     if (id == this.currentDate.toString()){
       id = "Heute";
      }
-    document.getElementById(`${"ist"+id}`).innerHTML = "";
+    document.getElementById(`${"spalteIst"+id}`).innerHTML = "";
   }
   else {
   var hh = Math.floor(diff / 60);
   var mm =  diff % 60;
   if (mm < 10){
-    this.ist= `${hh}:0${mm}`;
+    ist= `${hh}:0${mm}`;
   }else {
-  this.ist= `${hh}:${mm}`;
+    ist= `${hh}:${mm}`;
   }
+
+  this.ist[parseInt(id.split(".")[0])+1] = ist.toString();
+ 
   if (id == this.currentDate.toString()){
     id = "Heute";
    }
-  document.getElementById(`${"ist"+id}`).innerHTML = this.ist.toString();
+  document.getElementById(`${"spalteIst"+id}`).innerHTML = ist.toString();
+  this.berechneDiff(ist.toString(),id);
+ 
  
   }
 
 }
 
+berechneDiff(ende,datum){
+  
+   datum   = `${datum}`;
+  ​var start = this.soll.split(':');
+  ende = ende.split(':');
+  var HHStart = parseInt(start[0])*60;
+  var HHEnde = parseInt(ende[0])*60;
+  var MMStart = parseInt(start[1]);
+  var MMEnde = parseInt(ende[1]);
+  var diff = 0;
+  var differenz = "";
+  diff = ((HHEnde+MMEnde) - (HHStart+MMStart) ); 
+  //console.log(diff);
+
+  if (!diff) {
+    if (datum == this.currentDate.toString()){
+      datum = "Heute";
+     }
+    document.getElementById(`${"spalteDiff"+datum}`).innerHTML = "";
+  }
+  else {
+    if( diff < 0)
+   {
+    diff = ((HHStart+MMStart) - (HHEnde+MMEnde) ); 
+   }
+  var hh = Math.floor(diff / 60);
+  var mm =  diff % 60;
+  if (mm < 10 && ((HHEnde+MMEnde) - (HHStart+MMStart) ) < 0){
+    differenz= `-${hh}:0${mm}`;
+    document.getElementById(`${"spalteDiff"+datum}`).style.color= "red";
+  }else if (mm < 10 && ((HHEnde+MMEnde) - (HHStart+MMStart) ) >= 0){
+    differenz= `+${hh}:0${mm}`;
+    document.getElementById(`${"spalteDiff"+datum}`).style.color= "green";
+  }else if (mm > 10 && ((HHEnde+MMEnde) - (HHStart+MMStart) ) < 0)
+  {
+   differenz= `-${hh}:${mm}`;
+   document.getElementById(`${"spalteDiff"+datum}`).style.color= "red";
+  }else {
+    differenz= `+${hh}:${mm}`;
+    document.getElementById(`${"spalteDiff"+datum}`).style.color= "green";
+  }
+  if (datum == this.currentDate.toString()){
+    datum = "Heute";
+   }
+  document.getElementById(`${"spalteDiff"+datum}`).innerHTML = differenz.toString();
+ 
+  }
+
+}
+
+berechneSollSaldo(soll,mon){
+
+  this.sollSaldo = 0;
+  var days=  parseFloat(new Date(this.today.getFullYear(),mon , 0).getDate().toString());
+ ​soll = soll.split(':');
+ var hhInMin = parseInt(soll[0])*60;
+ var min = parseInt(soll[1]);
+ for (var i=0;i<days;i++){
+  this.sollSaldo = this.sollSaldo+ hhInMin + min ;
+}
+ 
+ var sollSt = Math.floor(this.sollSaldo / 60);
+ var sollMin =  this.sollSaldo % 60;
+ 
+ document.getElementById("sollSaldo").innerHTML = `${sollSt}St ${sollMin}Min`;
+
+}
+
+berechneIstSaldo(ist){
+ 
+ ​ist = ist.split(':');
+ var hhInMin = parseInt(ist[0])*60;
+ var min = parseInt(ist[1]);
+  this.istSaldo = this.istSaldo+ hhInMin + min ;
+ var istSt = Math.floor(this.istSaldo / 60);
+ var istMin =  this.istSaldo % 60;
+ 
+ document.getElementById("istSaldo").innerHTML = `${istSt}St ${istMin}Min`;
+
+}
+
+berechneSaldo(soll,ist){
+  this.Saldo = "";
+//  console.log(soll,ist);
+ var dif = soll - ist;
+ var saldoSt = Math.floor(dif / 60);
+ var saldoMin =  dif % 60;
+ 
+ if (dif < 0){ //Fehlende Stunde
+  this.Saldo = `${-saldoSt}St ${-saldoMin}Min`;
+  document.getElementById("Saldo").style.color= "green";
+ }else if (dif >= 0){ // OK oder Überstunden
+  this.Saldo = `-${saldoSt}St ${saldoMin}Min`;
+  document.getElementById("Saldo").style.color= "red";
+}
+document.getElementById("Saldo").innerHTML = this.Saldo.toString();
+this.sollSaldo = 0;
+this.istSaldo = 0;
+
+}
+
+bearbeiten(datum){
+  var id   = `${datum}`;
+  var start = <HTMLInputElement> document.getElementById(`${"beginn"+id}`);
+  start.disabled = false;
+  var start = <HTMLInputElement> document.getElementById(`${"bearb"+id}`);
+  start.hidden = true;
+  var start = <HTMLInputElement> document.getElementById(`${"speichern"+id}`);
+  start.hidden = false;
+  
+}
+
+speichern(datum){
+  var id   = `${datum}`;
+  var indx = parseInt(id.split(".")[0]) ;
+  var bearbBtn = <HTMLInputElement> document.getElementById(`${"bearb"+id}`);
+  bearbBtn.hidden = false;
+  var speichernBtn = <HTMLInputElement> document.getElementById(`${"speichern"+id}`);
+  speichernBtn.hidden = true;
+  var beginn = <HTMLInputElement> document.getElementById(`${"beginn"+id}`);
+  beginn.disabled = true;
+  if (id =="Heute"){
+    id = this.currentDate.toString();
+    indx = parseInt(id.split(".")[0])+1 ;
+ 
+  }
+  this.datensatz.Unterbr = this.unterbrechung;
+  this.datensatz.start = this.beginn[indx];
+  this.datensatz.ende = this.ende[indx];
+  this.datensatz.snr = this.mySnr.toString();
+  this.datensatz.jahr = this.currentYear;
+  this.datensatz.mon = id.split(".")[1];
+  this.datensatz.tag = id.split(".")[0];
+  this.datensatz.soll = this.soll;
+  this.datensatz.ist = this.ist[indx];
+
+  this.ZTServ.insertTime(this.datensatz)
+         	     .subscribe( data => {
+        		            console.log(data);
+         			 },  error => { console.log(error); });
+  //this.parseUserTimes(this.Zeit,this.todayMonth);
+  //this.berechneIstSaldo();
+  //this.berechneSaldo();
+  
+}
+
 checkRowRules(id : String,indx) {
- // console.log("check "+id);
+
   if (id == this.currentDate.toString()){  // Heute
     id = "Heute";
   }
   if(  document.getElementById(`${"ausf"+id}`)){
-  if( this.beginn[indx] != '' && this.abwesend[indx] == 0 && this.ende[indx] == '' ){ // Anwesend,  Start eingetragen , Ende nicht eingetragen
-   //console.log("check " +1);
+  if( this.beginn[indx] != '' && (!this.abwesend[indx] || this.abwesend[indx] == '0') && this.ende[indx] == '' ){ // Anwesend,  Start eingetragen , Ende nicht eingetragen
     document.getElementById(`${"ausf"+id}`).style.display = "none";
    document.getElementById(`${"endEing"+id}`).style.display = "block";
    document.getElementById(`${"grund"+id}`).style.display = "none";
-   var element =  <HTMLInputElement> document.getElementById("ende"+`${id}`);
-   element.disabled = false;
+   var ende =  <HTMLInputElement> document.getElementById("ende"+`${id}`);
+   ende.disabled = false;
+   ende.value = "";
+
 
   }
   else if(this.beginn[indx] == '' && this.abwesend[indx] == 0  ){// Anwesend  , Start nicht eingetragen
-   // console.log("check " +2);
+
     document.getElementById(`${"ausf"+id}`).style.display = "block";
     document.getElementById(`${"endEing"+id}`).style.display = "none";
     document.getElementById(`${"grund"+id}`).style.display = "none";
@@ -366,14 +667,15 @@ checkRowRules(id : String,indx) {
     element.disabled = true;
   }
   else if(this.ende[indx] != '' && this.beginn[indx] != '' ){// Anwesend  ,Start eingetragen, Ende  eingetragen
-   // console.log("check " +3);
+
+    console.log(this.currentDate);
     document.getElementById(`${"ausf"+id}`).style.display = "none";
     document.getElementById(`${"endEing"+id}`).style.display = "none";
     document.getElementById(`${"grund"+id}`).style.display = "none";
  
   }
   else if(  this.abwesend[indx] == 1  ){ // Abwesend
-    console.log("check " +4);
+
     document.getElementById(`${"ausf"+id}`).style.display = "none";
     document.getElementById(`${"endEing"+id}`).style.display = "none";
     document.getElementById(`${"grund"+id}`).style.display = "block";

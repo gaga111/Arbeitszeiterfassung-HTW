@@ -9,11 +9,11 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink='/Arbeitszeiterfassung' (click)="showAZE()">Arbeitszeiterfassung</a>
-      <a mat-list-item routerLink='/meineDaten' (click)="showMeineDaten()">Meine Daten</a>
-      <a mat-list-item routerLink='/Berichte' (click)="showBerichte()">Berichte</a>
-      <a mat-list-item routerLink='/Benutzerhandbuch' (click)="showBHB()">Benutzerhandbuch</a>
-      <a mat-list-item routerLink='/Kontakt' (click)="showKontakt()">Kontakt</a>
+      <a mat-list-item  (click)="showAZE()">Arbeitszeiterfassung</a>
+      <a mat-list-item  (click)="showMeineDaten()">Meine Daten</a>
+      <a mat-list-item  (click)="showBerichte()">Berichte</a>
+      <a mat-list-item  (click)="showBHB()">Benutzerhandbuch</a>
+      <a mat-list-item  (click)="showKontakt()">Kontakt</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
@@ -27,11 +27,11 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Hallo   {{userVorname}}!</span>
+      <span>Hallo   S{{snr}}!</span>
     </mat-toolbar>
     
     
-    <app-timetable hidden = false id="timetable"></app-timetable>
+    <app-timetable hidden="false" id="timetable"></app-timetable>
     <app-meine-daten hidden = true id="meineDaten"></app-meine-daten>
     <app-kontakt hidden = true id="kontakt"></app-kontakt>
     <app-berichte hidden = true id="berichte"></app-berichte>

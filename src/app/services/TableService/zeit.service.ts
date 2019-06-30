@@ -9,7 +9,9 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ZeitService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) {
+    
+  }
 
 getTime(snr : Zeit): Observable<any> {
   console.log("SENT "+snr.snr);
@@ -18,8 +20,8 @@ getTime(snr : Zeit): Observable<any> {
    }
   
   insertTime(zeit: Zeit): Observable<any> {
-
-    return this.http.post("http://ivm108.informatik.htw-dresden.de/ewa/G02/insertUser.php",
+    console.log("SENT "+zeit.snr);
+    return this.http.post("http://141.56.131.34/src/insertTime.php",
     zeit, { responseType: 'text' });
 
   } 

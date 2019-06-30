@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class BenutzerhandbuchComponent implements OnInit {
 
   constructor() { }
+  height : number;
 
   ngOnInit() {
+    this.height = window.screen.height ;
   }
 
 }

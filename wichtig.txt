@@ -34,6 +34,19 @@ systemctl reload apache2
 /var/log/apache2
 cat error.log
 
+FileZilla 
+SSH Connection to server herstellen 
+http://141.56.131.34/index.html
+
+Docs 
+typedoc --out docs --mode file --target ES6 ./src/app
+
+http://141.56.131.34/docs/
+
+
+
+
+
 
 
 

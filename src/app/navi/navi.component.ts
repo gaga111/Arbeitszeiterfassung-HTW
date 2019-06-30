@@ -13,12 +13,12 @@ import { DataService} from '../services/DataService/data.service';
 
 export class NaviComponent implements OnInit {
   mitarbeiter : Mitarbeiter[];
-  snr = "";
+  snr : Number;
   name = "";
   myname = "";
   anrede : string;
   soll : Number;
-  ist: number;
+  ist: Number;
   jahr: number;
   mon: number ;
   tag: number;
@@ -29,17 +29,20 @@ export class NaviComponent implements OnInit {
     constructor(private DataServ: DataService, private MAServ : MitarbeiterService, private router: Router ) { }
   
     ngOnInit() {
-      this.DataServ.setSnr(12345);
+    
+      this.DataServ.meineSnr.subscribe(nr => this.snr = nr);
+      document.getElementById("timetable").style.display = "block";
       this.MAServ.getMitarbeiter().subscribe(data =>
         {
             for(var i = 0;i< data.length-1;i++){
-              console.log(data[i]['S-Nr']);
+            //  console.log(data[i]['S-Nr']);
               if(data[i]['S-Nr'] == "12345"){
                 this.DataServ.setName(data[i]['Nachname']);
                 this.DataServ.userName.subscribe(nm => this.userName = nm);
                 this.DataServ.setVorname(data[i]['Vorname']);
                 this.DataServ.userVorname.subscribe(vn => this.userVorname = vn);
-                //data[i]['Fak']
+                this.DataServ.setFak(data[i]['Fak']);
+              
               }
       
             }

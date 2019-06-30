@@ -1,20 +1,29 @@
 
 <table style="width:99%;position: relative; top:60px;" >
     <tr>
-        <th style="position: absolute;font-size:150%;top: -35px;width: 100%"  > <button class="vorMonBtn" (click)="showLastMonth()"><i class="fa fa-chevron-circle-left fa-lg "></i> Vormonat</button><button class="nextMonBtn" id="nextMonBtn" hidden = true (click)="showNextMonth()">nächster Monat<i class="fa fa-chevron-circle-right fa-lg "></i></button>Ihre Arbeitszeit im {{currentMonth}} {{currentYear}}</th>
+        <th style="position: absolute;font-size:150%;top: -35px;width: 100%"  > <button class="vorMonBtn" id = "vorMonBtn" (click)="showLastMonth()"><i class="fa fa-chevron-circle-left fa-lg "></i> Vormonat</button><button class="nextMonBtn" id="nextMonBtn" hidden = true (click)="showNextMonth()">nächster Monat<i class="fa fa-chevron-circle-right fa-lg "></i></button>Ihre Arbeitszeit im {{currentMonth}} {{currentYear}}</th>
 
       </tr>
       <tr>
         <th></th>
         <th></th>
-        <th></th>
-        <th></th>
+      
         <th>
-            <p id="saldo">Saldo:</p>
-         </th>
-        <th></th>
-        <th></th>
-        <th></th>
+          <p>SOLL:</p>
+       </th>
+        <th>
+            <p id="sollSaldo" style="border-color: green;border-width: 5px;border-style: groove;" ></p>
+        </th>
+        <th>
+          <p>IST:</p>
+       </th>
+        <th>
+            <p id="istSaldo" style="border-color: green;border-width: 5px;border-style: ridge;" ></p>
+        </th>
+        <th>
+          <p id="saldo" >Monatsaldo:</p>
+       </th>
+        <th> <p id="Saldo" style="border-color: green;border-width: 5px;border-style: ridge;"  ></p></th>
         <th></th>
         <th></th>
         <th></th>
@@ -54,7 +63,7 @@
         </th>
 
         <th  id=spalteStart{{d}} *ngIf="d != currentDate"   >
-            <input matInput type="time" #beg id=beginn{{d}} (change) ="setStartTime(beg.value, d)" required>
+            <input [disabled]= "d < currentDate " matInput type="time" #beg id=beginn{{d}} (change) ="setStartTime(beg.value, d)" required>
           </th>
         <th id=spalteEnde{{d}} *ngIf="d != currentDate"   >
             <input type="time" #ende id=ende{{d}} [disabled] ="true" (change) ="setEndTime(ende.value,d)"   required>
@@ -65,7 +74,7 @@
         </th>
 
         <th id=spalteAbw{{d}} *ngIf="d != currentDate" >
-                <mat-checkbox matTooltip=" bitte Grund eingeben"
+                <mat-checkbox  id=checkbx{{d}}   matTooltip=" bitte Grund eingeben"
                 aria-label="Button that displays a tooltip when focused or hovered over" (change) ="checkAbwesendheit(d)"     #c class="checkbox" ></mat-checkbox>
                 <select id = "grund" #grund (change)="setGrund(grund.value,d)"   [disabled] ="c.checked == false" >
                   <option value="--">--</option>
@@ -85,18 +94,18 @@
           <p id= ist{{d}}></p>
         </th>
         <th id=spalteDiff{{d}} *ngIf="d != currentDate" > <!-- DIFF-->
-
+          <p id= diff{{d}}></p>
         </th>
         <th id=spalteVermerk{{d}} *ngIf="d != currentDate" >
             <textarea style="min-width:150px;max-width:150px ;" matInput placeholder="Leave a comment"></textarea>
         </th>
        
          <th id=spalteEdit{{d}} *ngIf="d != currentDate" >
-            <button   [disabled]= "beginn  == '' || abwesend == 1    "  type ="button"  >bearbeiten</button> 
-            
+            <button  id=bearb{{d}} [hidden]= "false" [disabled]= "d > currentDate " (click)="bearbeiten(d)"  type ="button"  >bearbeiten</button> 
+            <button class="speichernBtn" id=speichern{{d}} [hidden]= "true" (click)="speichern(d)"  type ="button"  >speichern</button> 
         </th>  
         <th id=spalteAchtung{{d}} >
-          <p *ngIf="d < currentDate || d == 'Heute'"  style="color: red; font-size:10px;  " id= ausf{{d}}  >Bitte ausfüllen!</p>
+          <p *ngIf="(d < currentDate || d == 'Heute') &&  vormonat == 0"  style="color: red; font-size:10px;  " id= ausf{{d}}  >Bitte ausfüllen!</p>
           <p  style="color: red; font-size:10px; " hidden = "true" id= endEing{{d}}    >Bitte Endzeit eingeben!</p>
           <p  style="color: red; font-size:10px; " hidden = "true"  id= grund{{d}}   >Bitte Grund auswählen!</p>
         </th>
