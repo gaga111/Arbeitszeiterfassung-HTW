@@ -20,15 +20,19 @@ export class LoginComponent implements OnInit {
     var credentials = new Credentials();
     credentials.name = name;
     credentials.pws = psw;
+    var string : String = "";
     this.AuthServ.authenticateUser(credentials).subscribe(data =>
       {
-        
+        string = JSON.parse(data);
+        if (string == "erfolg"){
+          console.log(string);
         this.DataServ.setSnr(name.slice(1));
          
           if (data.toString() ){
             this.router.navigate(['/Arbeitszeiterfassung']);
        
           }
+        }
          
          });
     }

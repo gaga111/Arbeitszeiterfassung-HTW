@@ -46,6 +46,9 @@ export class TimetableComponent implements OnInit {
   datensatz = new Zeit();
   vormonatSaldo =  0;
   vormonatSollSaldo = 0;
+  newBeginn: String = "";
+  newEnde : String= "";
+  newIst : String= "";
 
   
 
@@ -349,6 +352,7 @@ getCurrentDate(today,mon){
 setStartTime(time : String, datum: String){
   //console.log("setStart");
   //console.log(`${datum}`);
+  this.newBeginn = "";
   datum   = `${datum}`;
   var val = (<HTMLInputElement>document.getElementById(`${"ende"+datum}`)); 
   val.value = "";
@@ -359,12 +363,15 @@ setStartTime(time : String, datum: String){
   }
   var indx = parseInt(datum.split(".")[0]) +1;
   this.beginn[indx] = time;
+  this.newBeginn = time;
+  console.log("start"+this.beginn[indx]);
   this.ende[indx] = '';
   this.checkRowRules(datum,indx);
 }
 
 setEndTime(time : String, datum: String){
   datum   = `${datum}`;
+  this.newEnde = "";
   var el = <HTMLInputElement> document.getElementById(`${"untrbr"+datum}`)
   el.disabled = false;
 
@@ -374,6 +381,8 @@ setEndTime(time : String, datum: String){
   }
   var indx = parseInt(datum.split(".")[0]) +1;
   this.ende[indx] = time;
+  this.newEnde = time;
+  console.log("ende"+this.ende[indx]);
   this.checkRowRules(datum,indx);
   //console.log("Param" + this.beginn[indx],time,datum,this.unterbrechung);
   this.berechneIst(this.beginn[indx],time,datum,this.unterbrechung);
@@ -488,6 +497,8 @@ berechneIst(start,ende,id, unterbrechung){
   if (id == this.currentDate.toString()){
     id = "Heute";
    }
+   this.newIst = "";
+   this.newIst = ist.toString();
   document.getElementById(`${"spalteIst"+id}`).innerHTML = ist.toString();
   this.berechneDiff(ist.toString(),id);
  
@@ -623,22 +634,22 @@ speichern(datum){
  
   }
   this.datensatz.Unterbr = this.unterbrechung;
-  this.datensatz.start = this.beginn[indx];
-  this.datensatz.ende = this.ende[indx];
+  this.datensatz.start = this.newBeginn;
+  this.datensatz.ende = this.newEnde;
   this.datensatz.snr = this.mySnr.toString();
   this.datensatz.jahr = this.currentYear;
   this.datensatz.mon = id.split(".")[1];
   this.datensatz.tag = id.split(".")[0];
   this.datensatz.soll = this.soll;
-  this.datensatz.ist = this.ist[indx];
+  this.datensatz.ist =this.newIst;
+  console.log("DS"+this.datensatz.start);
+  console.log("DS"+this.datensatz.ende);
 
   this.ZTServ.insertTime(this.datensatz)
          	     .subscribe( data => {
         		            console.log(data);
          			 },  error => { console.log(error); });
-  //this.parseUserTimes(this.Zeit,this.todayMonth);
-  //this.berechneIstSaldo();
-  //this.berechneSaldo();
+  
   
 }
 

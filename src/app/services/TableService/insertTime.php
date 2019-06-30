@@ -33,7 +33,7 @@
         else
         {
             echo 'DS existiert schon';
-            $query2 = "UPDATE Arbeitszeit SET Start='$start', Ende='$ende' Ist='$ist' ,Unterbrechung='$untrbr'  WHERE( SNr='$snr'AND (Jahr='$jahr') AND (Monat='$mon') AND Tag='$tag')"; 
+            $query2 = "UPDATE Arbeitszeit SET Start='$start', Ende='$ende', Ist='$ist' ,Unterbrechung='$untrbr'  WHERE( SNr='$snr'AND (Jahr='$jahr') AND (Monat='$mon') AND Tag='$tag')"; 
                 if(mysqli_query($connect, $query2))
               {
                      echo "Data2 Inserted...";

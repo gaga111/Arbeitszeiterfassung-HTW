@@ -24,11 +24,39 @@
 
   if ($bind) {
    
-    echo "erfolg";
+    $respo = "erfolg";
+    $json = json_encode($respo);
+          if ($json === false) {
+              // Avoid echo of empty string (which is invalid JSON), and
+              // JSONify the error message instead:
+              $json = json_encode(array("jsonError", json_last_error_msg()));
+              if ($json === false) {
+                  // This should not happen, but we go all the way now:
+                  $json = '{"jsonError": "unknown"}';
+              }
+              // Set HTTP response status code to: 500 - Internal Server Error
+              http_response_code(500);
+          }
+        
+          echo $json;
    
     @ldap_close($ldap);
   } else {
-    echo "fail";
+    $respo = "fail";
+    $json = json_encode($respo);
+          if ($json === false) {
+              // Avoid echo of empty string (which is invalid JSON), and
+              // JSONify the error message instead:
+              $json = json_encode(array("jsonError", json_last_error_msg()));
+              if ($json === false) {
+                  // This should not happen, but we go all the way now:
+                  $json = '{"jsonError": "unknown"}';
+              }
+              // Set HTTP response status code to: 500 - Internal Server Error
+              http_response_code(500);
+          }
+        
+          echo $json;
   }
 
 
