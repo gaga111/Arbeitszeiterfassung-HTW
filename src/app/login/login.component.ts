@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       {
         string = JSON.parse(data);
         if (string == "erfolg"){
+          document.getElementById("span").style.display = "none";
           console.log(string);
         this.DataServ.setSnr(name.slice(1));
          
@@ -32,6 +33,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/Arbeitszeiterfassung']);
        
           }
+        }else{
+          document.getElementById("span").style.display = "block";
         }
          
          });

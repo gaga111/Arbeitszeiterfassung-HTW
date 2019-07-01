@@ -3,6 +3,23 @@
  
 }
 
+.logoutBtn{
+
+    border:0;
+    color : white;
+    font-size: 14px;
+    background:lightcoral  ;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding:  5px 5px;
+    width: 90%;
+    outline: none;
+    border-radius: 24px;
+    transition:  0.25s;
+  
+}
+
 .sidenav {
   width: 200px;
   box-shadow: 3px 0 6px rgba(0,0,0,.24);

@@ -90,4 +90,9 @@ export class NaviComponent implements OnInit {
     document.getElementById("bhb").style.display = "none";
     document.getElementById("berichte").style.display = "none";
   }
+
+  logout(){
+    this.router.navigate(['/Login']);
+
+  }
   }

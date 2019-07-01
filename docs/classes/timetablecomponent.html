@@ -114,6 +114,9 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#istsaldo" class="tsd-kind-icon">ist<wbr>Saldo</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#month" class="tsd-kind-icon">month</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#mysnr" class="tsd-kind-icon">my<wbr>Snr</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#newbeginn" class="tsd-kind-icon">new<wbr>Beginn</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#newende" class="tsd-kind-icon">new<wbr>Ende</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#newist" class="tsd-kind-icon">new<wbr>Ist</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#soll" class="tsd-kind-icon">soll</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#sollsaldo" class="tsd-kind-icon">soll<wbr>Saldo</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="timetablecomponent.html#today" class="tsd-kind-icon">today</a></li>
@@ -139,8 +142,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#checkabwesendheit" class="tsd-kind-icon">check<wbr>Abwesendheit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#checkrowrules" class="tsd-kind-icon">check<wbr>Row<wbr>Rules</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#getcurrentdate" class="tsd-kind-icon">get<wbr>Current<wbr>Date</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#getdata" class="tsd-kind-icon">get<wbr>Data</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#parseusertimes" class="tsd-kind-icon">parse<wbr>User<wbr>Times</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#reload" class="tsd-kind-icon">reload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#setendtime" class="tsd-kind-icon">set<wbr>End<wbr>Time</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#setgrund" class="tsd-kind-icon">set<wbr>Grund</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="timetablecomponent.html#setstarttime" class="tsd-kind-icon">set<wbr>Start<wbr>Time</a></li>
@@ -165,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L48">timetable/timetable.component.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L52">timetable/timetable.component.ts:52</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -196,7 +201,7 @@
 					<div class="tsd-signature tsd-kind-icon">Data<wbr>Serv<span class="tsd-signature-symbol">:</span> <a href="dataservice.html" class="tsd-signature-type">DataService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L52">timetable/timetable.component.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L56">timetable/timetable.component.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -206,7 +211,7 @@
 					<div class="tsd-signature tsd-kind-icon">MAServ<span class="tsd-signature-symbol">:</span> <a href="mitarbeiterservice.html" class="tsd-signature-type">MitarbeiterService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L52">timetable/timetable.component.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L56">timetable/timetable.component.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -216,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">Saldo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;0&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L44">timetable/timetable.component.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L45">timetable/timetable.component.ts:45</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -226,7 +231,7 @@
 					<div class="tsd-signature tsd-kind-icon">ZTServ<span class="tsd-signature-symbol">:</span> <a href="zeitservice.html" class="tsd-signature-type">ZeitService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L52">timetable/timetable.component.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L56">timetable/timetable.component.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -236,7 +241,7 @@
 					<div class="tsd-signature tsd-kind-icon">Zeit<span class="tsd-signature-symbol">:</span> <a href="zeit.html" class="tsd-signature-type">Zeit</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L17">timetable/timetable.component.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L18">timetable/timetable.component.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -246,7 +251,7 @@
 					<div class="tsd-signature tsd-kind-icon">abwesend<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;new Array()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L40">timetable/timetable.component.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L41">timetable/timetable.component.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -256,7 +261,7 @@
 					<div class="tsd-signature tsd-kind-icon">beginn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;new Array()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L34">timetable/timetable.component.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L35">timetable/timetable.component.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -266,7 +271,7 @@
 					<div class="tsd-signature tsd-kind-icon">breakpoint<wbr>Observer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BreakpointObserver</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L52">timetable/timetable.component.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L56">timetable/timetable.component.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -276,7 +281,7 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L25">timetable/timetable.component.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L26">timetable/timetable.component.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -286,7 +291,7 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Month<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L29">timetable/timetable.component.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L30">timetable/timetable.component.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -296,7 +301,7 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Year<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L33">timetable/timetable.component.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L34">timetable/timetable.component.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -306,7 +311,7 @@
 					<div class="tsd-signature tsd-kind-icon">datensatz<span class="tsd-signature-symbol">:</span> <a href="zeit.html" class="tsd-signature-type">Zeit</a><span class="tsd-signature-symbol"> =&nbsp;new Zeit()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L46">timetable/timetable.component.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L47">timetable/timetable.component.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -316,7 +321,7 @@
 					<div class="tsd-signature tsd-kind-icon">days<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;new Array()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L27">timetable/timetable.component.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L28">timetable/timetable.component.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -326,7 +331,7 @@
 					<div class="tsd-signature tsd-kind-icon">days<wbr>InMonth<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L26">timetable/timetable.component.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L27">timetable/timetable.component.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -336,7 +341,7 @@
 					<div class="tsd-signature tsd-kind-icon">diff<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;new Array()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L37">timetable/timetable.component.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L38">timetable/timetable.component.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -346,7 +351,7 @@
 					<div class="tsd-signature tsd-kind-icon">ende<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;new Array()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L38">timetable/timetable.component.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L39">timetable/timetable.component.ts:39</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -356,7 +361,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Handset$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(result &#x3D;&gt; result.matches))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L19">timetable/timetable.component.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L20">timetable/timetable.component.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -366,7 +371,7 @@
 					<div class="tsd-signature tsd-kind-icon">ist<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;new Array()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L36">timetable/timetable.component.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L37">timetable/timetable.component.ts:37</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -376,7 +381,7 @@
 					<div class="tsd-signature tsd-kind-icon">ist<wbr>Saldo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L43">timetable/timetable.component.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L44">timetable/timetable.component.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -386,7 +391,7 @@
 					<div class="tsd-signature tsd-kind-icon">month<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;this.todayMonth</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L32">timetable/timetable.component.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L33">timetable/timetable.component.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -396,7 +401,37 @@
 					<div class="tsd-signature tsd-kind-icon">my<wbr>Snr<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L39">timetable/timetable.component.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L40">timetable/timetable.component.ts:40</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="newbeginn" class="tsd-anchor"></a>
+					<h3>new<wbr>Beginn</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>Beginn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L50">timetable/timetable.component.ts:50</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="newende" class="tsd-anchor"></a>
+					<h3>new<wbr>Ende</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>Ende<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L51">timetable/timetable.component.ts:51</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="newist" class="tsd-anchor"></a>
+					<h3>new<wbr>Ist</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>Ist<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L52">timetable/timetable.component.ts:52</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -406,7 +441,7 @@
 					<div class="tsd-signature tsd-kind-icon">soll<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;0&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L35">timetable/timetable.component.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L36">timetable/timetable.component.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -416,7 +451,7 @@
 					<div class="tsd-signature tsd-kind-icon">soll<wbr>Saldo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L42">timetable/timetable.component.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L43">timetable/timetable.component.ts:43</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -426,7 +461,7 @@
 					<div class="tsd-signature tsd-kind-icon">today<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> =&nbsp;new Date()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L30">timetable/timetable.component.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L31">timetable/timetable.component.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -436,7 +471,7 @@
 					<div class="tsd-signature tsd-kind-icon">today<wbr>Month<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;this.today.getMonth() + 1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L31">timetable/timetable.component.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L32">timetable/timetable.component.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -446,7 +481,7 @@
 					<div class="tsd-signature tsd-kind-icon">unterbrechung<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;0:0&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L41">timetable/timetable.component.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L42">timetable/timetable.component.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -456,7 +491,7 @@
 					<div class="tsd-signature tsd-kind-icon">vormonat<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">String</span><span class="tsd-signature-symbol"> =&nbsp;&quot;0&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L45">timetable/timetable.component.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L46">timetable/timetable.component.ts:46</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -466,7 +501,7 @@
 					<div class="tsd-signature tsd-kind-icon">vormonat<wbr>Ist<wbr>Array<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;new Array()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L28">timetable/timetable.component.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L29">timetable/timetable.component.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -476,7 +511,7 @@
 					<div class="tsd-signature tsd-kind-icon">vormonat<wbr>Saldo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L47">timetable/timetable.component.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L48">timetable/timetable.component.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -486,7 +521,7 @@
 					<div class="tsd-signature tsd-kind-icon">vormonat<wbr>Soll<wbr>Saldo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L48">timetable/timetable.component.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L49">timetable/timetable.component.ts:49</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -503,7 +538,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L600">timetable/timetable.component.ts:600</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L663">timetable/timetable.component.ts:663</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -526,7 +561,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L499">timetable/timetable.component.ts:499</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L554">timetable/timetable.component.ts:554</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -552,7 +587,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L78">timetable/timetable.component.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L86">timetable/timetable.component.ts:86</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -575,7 +610,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L440">timetable/timetable.component.ts:440</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L493">timetable/timetable.component.ts:493</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -607,7 +642,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L567">timetable/timetable.component.ts:567</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L627">timetable/timetable.component.ts:627</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -630,7 +665,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L580">timetable/timetable.component.ts:580</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L642">timetable/timetable.component.ts:642</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -656,7 +691,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L549">timetable/timetable.component.ts:549</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L609">timetable/timetable.component.ts:609</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -682,7 +717,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L126">timetable/timetable.component.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L148">timetable/timetable.component.ts:148</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -699,7 +734,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L399">timetable/timetable.component.ts:399</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L452">timetable/timetable.component.ts:452</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -722,7 +757,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L645">timetable/timetable.component.ts:645</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L715">timetable/timetable.component.ts:715</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -748,7 +783,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L281">timetable/timetable.component.ts:281</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L318">timetable/timetable.component.ts:318</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -765,6 +800,23 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getdata" class="tsd-anchor"></a>
+					<h3>get<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L74">timetable/timetable.component.ts:74</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="ngoninit" class="tsd-anchor"></a>
 					<h3>ng<wbr>OnInit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -774,7 +826,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L54">timetable/timetable.component.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L58">timetable/timetable.component.ts:58</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -791,7 +843,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L182">timetable/timetable.component.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L204">timetable/timetable.component.ts:204</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -808,6 +860,23 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="reload" class="tsd-anchor"></a>
+					<h3>reload</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">reload<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L711">timetable/timetable.component.ts:711</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="setendtime" class="tsd-anchor"></a>
 					<h3>set<wbr>End<wbr>Time</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -817,7 +886,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L366">timetable/timetable.component.ts:366</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L416">timetable/timetable.component.ts:416</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -843,7 +912,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L425">timetable/timetable.component.ts:425</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L478">timetable/timetable.component.ts:478</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -866,7 +935,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L349">timetable/timetable.component.ts:349</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L389">timetable/timetable.component.ts:389</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -892,7 +961,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L382">timetable/timetable.component.ts:382</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L435">timetable/timetable.component.ts:435</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -918,7 +987,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L234">timetable/timetable.component.ts:234</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L271">timetable/timetable.component.ts:271</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -935,7 +1004,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L261">timetable/timetable.component.ts:261</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L298">timetable/timetable.component.ts:298</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -952,7 +1021,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/cb88c65/src/app/timetable/timetable.component.ts#L611">timetable/timetable.component.ts:611</a></li>
+									<li>Defined in <a href="https://github.com/gaga111/Arbeitszeiterfassung-HTW/blob/92ec901/src/app/timetable/timetable.component.ts#L674">timetable/timetable.component.ts:674</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1088,6 +1157,15 @@
 								<a href="timetablecomponent.html#mysnr" class="tsd-kind-icon">my<wbr>Snr</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="timetablecomponent.html#newbeginn" class="tsd-kind-icon">new<wbr>Beginn</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="timetablecomponent.html#newende" class="tsd-kind-icon">new<wbr>Ende</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="timetablecomponent.html#newist" class="tsd-kind-icon">new<wbr>Ist</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="timetablecomponent.html#soll" class="tsd-kind-icon">soll</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -1148,10 +1226,16 @@
 								<a href="timetablecomponent.html#getcurrentdate" class="tsd-kind-icon">get<wbr>Current<wbr>Date</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="timetablecomponent.html#getdata" class="tsd-kind-icon">get<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="timetablecomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="timetablecomponent.html#parseusertimes" class="tsd-kind-icon">parse<wbr>User<wbr>Times</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="timetablecomponent.html#reload" class="tsd-kind-icon">reload</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="timetablecomponent.html#setendtime" class="tsd-kind-icon">set<wbr>End<wbr>Time</a>
